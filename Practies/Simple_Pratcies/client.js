@@ -6,18 +6,16 @@ const kafka = new Kafka({
   connectionTimeout: 3000, // Optional: Adjust the timeout as needed
 });
 
+
+
+console.log("kafka client")
+
 module.exports = kafka; // Ensure you export the Kafka instance
 
 
 
 // module.exports = Kafka;
 // brokers: ['listeners=PLAINTEXT://192.168.29.79:9092'],
-
-//docker run -d --name zookeeper -p 2181:2181 -e ZOOKEEPER_CLIENT_PORT=2181 confluentinc/cp-zookeeper //use this command 
- 
-
-
-// docker run -p 9092:9092 \ -e KAFKA_ZOOKEEPER_CONNECT=//192.168.29.79:2181 \ -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.29.79:9092 \ -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 \ confluentinc/cp-kafka
 
 
 
