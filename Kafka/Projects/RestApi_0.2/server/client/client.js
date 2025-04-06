@@ -9,6 +9,8 @@ const kafka = new Kafka({
 
 
 
+
+
 console.log("kafka client")
 
 module.exports = kafka; // Ensure you export the Kafka instance

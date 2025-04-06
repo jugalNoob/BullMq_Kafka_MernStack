@@ -1,22 +1,24 @@
 const express = require("express");
-require("./db/conn"); // Database connection
-const router = require('./routes/router');
+const connectDB = require("./db/conn"); // Ensure DB connection is imported
+const router = require("./routes/router");
 
 const app = express();
 const port = 9000;
 
-app.use(express.json());
+app.use(express.json());  // ✅ Add this line before using routes
+
 app.use(router);
 
-const server = app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+// Connect to MongoDB before starting the server
+(async () => {
+    await connectDB();
+    app.listen(port, () => {
+        console.log(`🚀 Server running on http://localhost:${port}`);
+    });
+})();
 
 // Gracefully shut down server
 process.on("SIGINT", async () => {
     console.log("Shutting down server...");
-    server.close(() => {
-        console.log("Server closed.");
-        process.exit(0);
-    });
+    process.exit(0);
 });
